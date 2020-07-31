@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  
+  <ion-slides  [options]="slideOpts">
+    
+    <ng-container *ngFor="let pelicula of peliculas">
+      <ion-slide >
+        <ion-card>
+          <img src="https://image.tmdb.org/t/p/w500/{{pelicula.backdrop_path}}" alt="">
+          <ion-card-subtitle>
+            {{pelicula.title}}
+          </ion-card-subtitle>
+        </ion-card>
+      </ion-slide>
+    </ng-container>
+    </ion-slides>
+   
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-content>
