@@ -9,7 +9,7 @@ import { PeticionesService } from '../services/peticiones.service';
 export class Tab1Page implements OnInit{
 
   public peliculas:Array<any>;
-  public slideOpts;
+  public peliculasPopulares:Array<any>;
   constructor(
     private peticionesService: PeticionesService
   ) {
@@ -17,14 +17,16 @@ export class Tab1Page implements OnInit{
   }
 
   ngOnInit(){
-    this.slideOpts = {
-      initialSlide: 1,
-      speed: 400
-    };
+ 
     this.peticionesService.getFeatured().subscribe(val=> {
       this.peliculas = val.results
-      console.log(val.results);
+      
+    })
+    this.peticionesService.getPopulares(1).subscribe(val=> {
+      this.peliculasPopulares = val.results
       
     })
   }
+
+
 }

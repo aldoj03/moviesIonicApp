@@ -24,3 +24,11 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.poster{
+    display: flex !important;
+    width: 220px !important;
+    height: 330px !important;
+    box-shadow: 7px 7px 9px 3px #00000070;
+}
