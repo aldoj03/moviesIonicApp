@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
@@ -6,23 +6,30 @@ import { PeticionesService } from 'src/app/services/peticiones.service';
   templateUrl: './pelicula-detail.component.html',
   styleUrls: ['./pelicula-detail.component.scss'],
 })
-export class PeliculaDetailComponent implements OnInit {
+export class PeliculaDetailComponent implements OnInit,OnDestroy {
 
   @Input() id
   public pelicula;
+  public cast;
   constructor(
     private peticionesService: PeticionesService
   ) {
   }
 
   ngOnInit() {
-    this.peticionesService.getMovie(this.id).subscribe(movie => {
+    const sub = this.peticionesService.getMovie(this.id).subscribe(movie => {
       console.log(movie)
+      this.pelicula = movie,
+      sub.unsubscribe()
     });
 
     this.peticionesService.getMovieCast(this.id).subscribe(movie=>{
       console.log(movie)
     })
+
+  }
+
+  ngOnDestroy(){
 
   }
 
